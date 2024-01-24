@@ -1,5 +1,5 @@
 const pokemonList = document.querySelector("#poke-list");
-const buttonsH = document.querySelector(".btn-header");
+const buttonsH = document.querySelectorAll(".btn-header");
 
 let URL = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -25,7 +25,7 @@ function showPokemon(data){
         PokeId = "0" + PokeId;
     }
 
-    const div = document.createElement("div");
+    const div = document.createElement("iv");
     div.classList.add("pokemon")
     div.innerHTML =`
         <p class="pokemon-id-back">#${PokeId}</p>
@@ -49,35 +49,26 @@ function showPokemon(data){
     pokemonList.append(div);
 }
 
-const buttonElements = Array.from(buttonsH);
+buttonsH.forEach(button => button.addEventListener("click", (event) => {
+    const buttonId= event.currentTarget.id;
 
-Promise.all(buttonElements.map(button => {
-    return new Promise(resolve => {
-        button.addEventListener("click", (event) => {
-            const buttonId = event.currentTarget.id;
-            pokemonList.innerHTML = "";
+    pokemonList.innerHTML= "";
 
-            const fetchPromises = [];
+    for (let i= 1; i<=151; i++){
+        fetch(URL + i)
+        .then((response) => response.json())
+        .then(data => {
 
-            for (let i = 1; i <= 151; i++) {
-                fetch(URL + i)
-                    .then((response) => response.json())
-                    .then(data => {
-                        if (buttonId === "see-all") {
-                            showPokemon(data);
-                        } else {
-                            const types = data.types.map(type => type.type.name);
-                            if (types.some(type => type.includes(buttonId))) {
-                                showPokemon(data);
-                            }
-                        }
-                        resolve(); // Resuelve la promesa después de manejar cada dato
-                    });
-                fetchPromises.push(fetch(URL + i));
+            if (buttonId === "see-all") {
+                showPokemon(data);
+            } else{
+
+                const types = data.types.map(type => type.type.name);
+                if (types.some(type => type.includes(buttonId))) {
+                    showPokemon(data);
+                }
             }
+        })
+    }
 
-            // Espera a que todas las solicitudes fetch se completen antes de resolver la promesa
-            Promise.all(fetchPromises).then(() => resolve());
-        });
-    });
 }));
