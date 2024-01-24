@@ -60,7 +60,7 @@ body{
 
 .logo img{
     width: 100%;
-    max-width: 20rem;
+    max-width: 13rem;
 }
 
 header{
@@ -74,7 +74,9 @@ header{
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
-    padding-inline: 1rem;
+    padding-inline: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
 
 }
 
@@ -104,6 +106,8 @@ header{
 
 main{
     padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .image-pokemon img{
@@ -113,11 +117,22 @@ max-width: 8rem;
 
 .all-pokemons{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap:1rem;
 
 }
 
+@media screen and (min-width: 470px) {
+    .all-pokemons{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .all-pokemons{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
 .pokemon {
     border-radius: 1rem;
     background-color: var(--clr-white);
