@@ -195,7 +195,7 @@ max-width: 8rem;
 
 }
 
-.pokemon-tipes{
+.pokemon-types{
     display: flex;
     gap:.5rem;
     font-size: .75rem;
@@ -205,7 +205,7 @@ max-width: 8rem;
 
 }
 
-.tipe{
+.type{
     padding: 0.25rem .5rem;
     border-radius: 100vmax;
 
