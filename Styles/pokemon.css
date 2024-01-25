@@ -113,6 +113,16 @@ font-size: 3rem;
     margin-top: .2rem;
     padding: .5rem 1.1rem;
     border-radius: 100vmax;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+.type:hover{
+    transform: scale(1.05);
+}
+
+.type:active{
+    transform: scale(0.9);
 }
 
 main{
@@ -123,6 +133,7 @@ main{
 display: grid;
 grid-template-columns: 1fr;
 gap: 1rem;
+margin-top: 1.5rem;
 }
 
 @media screen and (min-width: 470px) {
@@ -148,9 +159,9 @@ gap: 1rem;
 
 .description{
     margin-top: .3rem;
-    padding: .3rem 3rem;
+    padding: .6rem 3rem;
     border: var(--clr-cleangray) solid 2px;
-    border-radius: 1.67vmax;
+    border-radius: 1.4vmax;
     text-align: center;
 }
 
@@ -159,6 +170,47 @@ gap: 1rem;
     font-size: 1.1rem;
     color: var(--clr-black);
 }
+
+.detail-img{
+    width: 100%;
+    max-width: 1.2rem;
+    margin-bottom: 0.2rem;
+    
+}
+
+.tittle{
+    display:flex;
+    gap: 0.4rem;
+}
+
+
+.skills-Tittle {
+    margin-top: 1.6rem;
+}
+
+.skills-Tittle p {
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.skills-Tittle hr {
+    margin-top: .4rem;
+}
+
+.skills-box{
+    margin-top: .5rem;
+}
+
+.skills-box p{
+    margin-top: .5rem;
+    padding: .6rem;
+    color: var(--clr-white);
+    font-weight: 600;
+    border-radius: .5vmax;
+    cursor:default;
+}
+
+
 
 /* === Colors === */
 
