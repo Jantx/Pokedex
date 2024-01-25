@@ -160,7 +160,16 @@ max-width: 8rem;
     padding-inline:1rem;
     display: flex;
     justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
 
+.image-pokemon:hover{
+    transform:scale(1.1);
+}
+
+.image-pokemon:active{
+transform: scale(0.9);
 }
 
 .data-pokemon{
