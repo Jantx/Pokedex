@@ -71,7 +71,6 @@ main{
     width: 60rem;
 	height: 60rem;
 	border-radius: 50%;
-	background: var(--clr-orange);
     margin-bottom: 45rem;
 	z-index: -1;
     position: absolute;
@@ -213,7 +212,93 @@ margin-top: 1.5rem;
     cursor:default;
 }
 
+/* === Circle Colors === */
 
+.normal-color{
+    background: linear-gradient(rgba(160, 162, 160), 70%, rgba(223, 224, 223));
+}
+
+.fire-color {
+    background: linear-gradient(rgba(255, 140, 0), 70%, rgba(250, 199, 160));
+}
+  
+.water-color {
+    background: linear-gradient(rgba(36, 129, 240), 70%, rgba(182, 213, 250));
+}
+  
+.grass-color{
+    background: linear-gradient(rgba(61, 162, 36), 70%, rgba(190, 224, 182));
+}
+
+  
+.electric-color{
+    background: linear-gradient(rgba(250, 193, 0), 70%, rgba(253, 234, 170));
+}
+
+  
+.ice-color{
+    background: linear-gradient(rgba(157, 235, 255), 70%, rgba(222, 248, 255));
+}
+
+  
+.fighting-color{
+    background: linear-gradient(rgba(231, 35, 36), 70%, rgba(247, 181, 182));
+}
+
+  
+.poison-color{
+    background: linear-gradient(rgba(146, 63, 204), 70%, rgba(218, 191, 238));
+}
+
+  
+.ground-color{
+    background: linear-gradient(rgba(146, 80, 27), 70%, rgba(218, 196, 179));
+}
+
+  
+.flying-color{
+    background: linear-gradient(rgba(129, 185, 239), 70%, rgba(213, 231, 249));
+}
+
+  
+.pyshic-color{
+    background: linear-gradient(rgba(239, 63, 122), 70%, rgba(249, 191, 210));
+}
+
+  
+.bug-color{
+    background: linear-gradient(rgba(146, 162, 18), 70%, rgba(218, 224, 176));
+}
+
+  
+.rock-color{
+    background: linear-gradient(rgba(176, 171, 130), 70%, rgba(228, 227, 213));
+}
+
+  
+.ghost-color{
+    background: linear-gradient(rgba(113, 63, 113), 70%, rgba(207, 191, 207));
+}
+
+  
+.dark-color{
+    background: linear-gradient(rgba(79, 63, 61), 70%, rgba(196, 191, 190));
+}
+
+  
+.dragon-color{
+    background: linear-gradient(rgba(79, 96, 226), 70%, rgba(196, 202, 245));
+}
+
+  
+.steel-color{
+    background: linear-gradient(rgba(96, 162, 185), 70%, rgba(202, 224, 231));
+}
+
+  
+.fairy-color{
+    background: linear-gradient(rgba(239, 113, 240), 70%, rgba(249, 207, 250));
+}
 
 /* === Colors === */
 

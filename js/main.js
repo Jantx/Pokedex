@@ -5,7 +5,7 @@ window.pokemonName = "";
 
 let URL = "https://pokeapi.co/api/v2/pokemon/";
 
-for (let i = 1; i <= 5; i++) {
+for (let i = 1; i <= 250; i++) {
   fetch(URL + i)
     .then((response) => response.json())
     .then((data) => showPokemon(data));
@@ -58,7 +58,7 @@ buttonsH.forEach((button) =>
 
     pokemonList.innerHTML = "";
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 387; i++) {
       fetch(URL + i)
         .then((response) => response.json())
         .then((data) => {

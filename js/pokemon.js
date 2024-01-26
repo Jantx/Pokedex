@@ -16,6 +16,7 @@ function showData(data){
 
     
     
+    
 
     let moves = data.moves.map(
         (move) => `
@@ -31,6 +32,7 @@ function showData(data){
       );
       types = types.join("");
     
+
       let PokeId = data.id.toString();
     
       if (PokeId.length === 1) {
@@ -44,7 +46,7 @@ function showData(data){
     div.innerHTML=`
     <div class="circle-div">
             <img src="${data.sprites.other["official-artwork"].front_default}" alt="${data.name}" alt="${data.name}">    
-            <div id="circle">
+            <div id="circle" class="${data.types[0].type.name}-color">
             </div>
         </div> 
 
@@ -60,6 +62,9 @@ function showData(data){
         </div>
     `;
     header.append(div);
+
+
+    
 
     const div2 = document.createElement("div");
     div2.classList.add("allpokemondata");
