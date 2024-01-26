@@ -1,6 +1,7 @@
 
 const header = document.querySelector(".header");
 const main = document.querySelector(".main");
+const all = document.querySelector(".all");
 
 var storedContent = localStorage.getItem('pokemonContent');
 console.log(storedContent);
@@ -12,6 +13,17 @@ fetch(URL + storedContent)
 .then((data) => showData(data));
 
 function showData(data){
+
+    
+    
+
+    let moves = data.moves.map(
+        (move) => `
+        <p class="skill flying">${move.move.name}</p>
+        `
+      );
+      moves= moves.join("");
+
     let types = data.types.map(
         (type) => `
         <p class="${type.type.name} type">${type.type.name}</p>
@@ -108,12 +120,11 @@ function showData(data){
         </div>
 
         <div class="skills-box">
-            <p class="skill fire">mega-punch</p>
-            <p class="skill water">mega-punch</p>
+           ${moves}
             
         </div>
 
     `;
 
-    main.append(div2);
+    all.append(div2);
 }
