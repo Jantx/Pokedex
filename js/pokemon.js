@@ -20,7 +20,7 @@ function showData(data){
 
     let moves = data.moves.map(
         (move) => `
-        <p class="skill flying">${move.move.name}</p>
+        <p class="skill ${data.types[0].type.name}">${move.move.name}</p>
         `
       );
       moves= moves.join("");
