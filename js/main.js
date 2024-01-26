@@ -79,9 +79,6 @@ function sortPokemonById() {
   allPokemonData.forEach((pokemon) => showPokemon(pokemon));
 }
 
-// Event listener para el botón "Sort by ID"
-document.getElementById("sort-by-id").addEventListener("click", sortPokemonById);
-
 buttonsH.forEach((button) =>
   button.addEventListener("click", (event) => {
     const buttonId = event.currentTarget.id;
