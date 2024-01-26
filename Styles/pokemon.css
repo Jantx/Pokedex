@@ -40,7 +40,6 @@
 }
 
 body{ 
-    min-width: 55vh;
     min-height: 100vh;
     background-color: var(--clr-white);
     overflow-x: hidden;
@@ -67,7 +66,6 @@ main{
     display: flex;
     isolation: isolate;
     position: relative;
-    max-width: 100%;
 }
 
 #circle{

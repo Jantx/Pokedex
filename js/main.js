@@ -4,12 +4,32 @@ const body = document.querySelector(".body");
 window.pokemonName = "";
 
 let URL = "https://pokeapi.co/api/v2/pokemon/";
+let allPokemonData = []; // Almacena todos los datos de los Pokémon
 
-for (let i = 1; i <= 250; i++) {
-  fetch(URL + i)
+// Función para realizar una solicitud y obtener datos de un Pokémon
+function fetchPokemonData(id) {
+  return fetch(URL + id)
     .then((response) => response.json())
-    .then((data) => showPokemon(data));
+    .then((data) => {
+      allPokemonData.push(data);
+    });
 }
+
+// Crear un array de promesas para todas las solicitudes
+const fetchPromises = [];
+for (let i = 1; i <= 387; i++) {
+  fetchPromises.push(fetchPokemonData(i));
+}
+
+// Esperar a que todas las solicitudes se completen
+Promise.all(fetchPromises)
+  .then(() => {
+    // Una vez que todas las solicitudes se han completado, ordenar y mostrar los Pokémon
+    sortPokemonById();
+  })
+  .catch((error) => {
+    console.error("Error fetching Pokemon data:", error);
+  });
 
 function showPokemon(data) {
   let types = data.types.map(
@@ -52,57 +72,52 @@ function showPokemon(data) {
   pokemonList.append(div);
 }
 
+// Ordenar todos los Pokémon por número (id)
+function sortPokemonById() {
+  allPokemonData.sort((a, b) => a.id - b.id);
+  pokemonList.innerHTML = ""; // Limpia la lista antes de mostrar los Pokémon ordenados
+  allPokemonData.forEach((pokemon) => showPokemon(pokemon));
+}
+
+// Event listener para el botón "Sort by ID"
+document.getElementById("sort-by-id").addEventListener("click", sortPokemonById);
+
 buttonsH.forEach((button) =>
   button.addEventListener("click", (event) => {
     const buttonId = event.currentTarget.id;
 
     pokemonList.innerHTML = "";
 
-    for (let i = 1; i <= 387; i++) {
-      fetch(URL + i)
-        .then((response) => response.json())
-        .then((data) => {
-          if (buttonId === "see-all") {
-            showPokemon(data);
-          } else {
-            const types = data.types.map((type) => type.type.name);
-            if (types.some((type) => type.includes(buttonId))) {
-              showPokemon(data);
-            }
-          }
-        });
-    }
+    allPokemonData.forEach((data) => {
+      const types = data.types.map((type) => type.type.name);
+      if (buttonId === "see-all" || types.some((type) => type.includes(buttonId))) {
+        showPokemon(data);
+      }
+    });
   })
 );
 
-
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   const pokemonList = document.querySelector("#poke-list");
-  
+
   // Agregar un evento clic al contenedor principal
-  pokemonList.addEventListener('click', function(event) {
+  pokemonList.addEventListener("click", function (event) {
     // Verificar si el clic se realizó en una imagen de Pokémon
-    if (event.target.classList.contains('pokeImage')) {
+    if (event.target.classList.contains("pokeImage")) {
       // Obtén el elemento padre del clic actual, que es el contenedor .pokemon
-      var pokemonContainer = event.target.closest('.pokemon');
+      var pokemonContainer = event.target.closest(".pokemon");
 
       // Verifica si se encontró el contenedor y obtén el elemento con la clase .name-pokemon
       if (pokemonContainer) {
-        var pokemonNameElement = pokemonContainer.querySelector('.name-pokemon');
-        
+        var pokemonNameElement = pokemonContainer.querySelector(".name-pokemon");
+
         // Obtén y muestra el contenido del elemento .name-pokemon
         var content = pokemonNameElement.textContent;
-        console.log(content)
-        localStorage.setItem('pokemonContent', content);
-
+        console.log(content);
+        localStorage.setItem("pokemonContent", content);
       }
     }
 
-    window.location.href="pokemon.html";
- 
+    window.location.href = "pokemon.html";
   });
-
 });
-
-
